@@ -33,8 +33,7 @@ jobs:
       - name: Build package
         run: |
           python -m invoke build --docs
-          cd dist/
-          zip -r documentation.zip documentation
+          mv dist/documentation ./
 
       - name: Publish a Python distribution to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -47,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "dist/documentation"
+          path: "documentation"
 
       - name: Deploy to GitHub Pages
         id: deployment
