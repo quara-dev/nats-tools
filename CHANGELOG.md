@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/quara-dev/nats-tools/compare/v1.0.0...v1.0.1) (2023-02-27)
+
+
+### Bug Fixes
+
+* **ci:** publish package to pypi ([562df87](https://github.com/quara-dev/nats-tools/commit/562df87a814a0549b57b5e2444471d2fbd12cfe5))
+
 ## 1.0.0 (2023-02-27)
 
 
