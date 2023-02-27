@@ -34,6 +34,7 @@ jobs:
         run: |
           python -m invoke build --docs
           mv dist/documentation ./
+          zip -r documentation.zip documentation
 
       - name: Publish a Python distribution to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -86,7 +87,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dist/documentation.zip
+          file: documentation.zip
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
