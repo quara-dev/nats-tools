@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/quara-dev/nats-tools/compare/v1.0.1...v1.0.2) (2023-02-27)
+
+
+### Bug Fixes
+
+* **ci:** also publish documentation as github release artifact ([b447aa9](https://github.com/quara-dev/nats-tools/commit/b447aa96ec51c56cb82753a10c5377878f5c7d43))
+
 ## [1.0.1](https://github.com/quara-dev/nats-tools/compare/v1.0.0...v1.0.1) (2023-02-27)
 
 
