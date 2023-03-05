@@ -19,8 +19,10 @@ dynamic = ["version"]
 dependencies = ["httpx", "jinja2"]
 
 [project.optional-dependencies]
+tls = ["trustme"]
 build = ["build", "invoke", "pip-tools"]
 dev = [
+    "trustme",
     "black",
     "isort",
     "invoke",

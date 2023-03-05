@@ -6,32 +6,44 @@ import httpx
 
 
 class SortOption(str, Enum):
-    # Connection ID
     CID = "cid"
-    # Connection start time, same as CID
+    """Connection ID"""
+
     START = "start"
-    # Number of subscriptions
+    """Connection start time, same as CID"""
+
     SUBS = "subs"
-    # Amount of data in bytes waiting to be sent to client
+    """Number of subscriptions"""
+
     PENDING = "pending"
-    # Number of messages sent
+    """Amount of data in bytes waiting to be sent to client"""
+
     MSGS_TO = "msgs_to"
-    # Number of messages received
+    """Number of messages sent"""
+
     MSGS_FROM = "msgs_from"
-    # Number of bytes sent
+    """Number of messages received"""
+
     BYTES_TO = "bytes_to"
-    # Number of bytes received
+    """Number of bytes sent"""
+
     BYTES_FROM = "bytes_from"
-    # Last activity
+    """Number of bytes received"""
+
     LAST = "last"
-    # Amount of inactivity
+    """Last activity"""
+
     IDLE = "idle"
-    # Lifetime of the connection
+    """Amount of inactivity"""
+
     UPTIME = "uptime"
-    # Stop time for a closed connection
+    """Lifetime of the connection"""
+
     STOP = "stop"
-    # Reason for a closed connection
+    """Stop time for a closed connection"""
+
     REASON = "reason"
+    """Reason for a closed connection"""
 
 
 class SubsOption(Enum):

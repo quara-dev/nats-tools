@@ -1,0 +1,371 @@
+# Auto-generated
+{% if host and not listen -%}
+# NATS server listening host
+host: {{ host }}
+{% endif -%}
+{% if port and not listen -%}
+# NATS server listening port
+port: {{ port }}
+{% endif -%}
+{% if listen -%}
+# NATS server listening address
+listen: {{ listen }}
+{% endif -%}
+{% if tls -%}
+# Configure TLS for client connections
+tls: {{ tls|tojson(indent=2) }}
+{% endif -%}
+{% if client_advertise -%}
+# Address advertised to client
+client_advertise: {{ client_advertise }}
+{% endif -%}
+{% if ping_interval -%}
+# Duration at which pings are sent to clients, leaf nodes and routes
+ping_interval: {{ ping_interval }}
+{% endif -%}
+{% if ping_max -%}
+# After how many unanswered pings the server will allow before closing the connection
+ping_max: {{ ping_max }}
+{% endif -%}
+{% if write_deadline -%}
+# Maximum number of seconds the server will block when writing. Once this threshold is exceeded the connection will be closed
+write_deadline: "{{ write_deadline }}"
+{% endif -%}
+{% if max_connections -%}
+# Maximum number of active client connections
+max_connections: {{ max_connections }}
+{% endif -%}
+{% if max_control_line -%}
+# Maximum length of a protocol line (including combined length of subject and queue group)
+max_control_line: {{ max_control_line }}
+{% endif -%}
+{% if max_payload -%}
+# Maximum number of bytes in a message payload
+max_payload: {{ max_payload }}
+{% endif -%}
+{% if max_pending -%}
+# Maximum number of bytes in a message payload
+max_pending: {{ max_pending }}
+{% endif -%}
+{% if max_subscriptions -%}
+# Maximum numbers of subscriptions per client and leafnode accounts connection
+max_subscriptions: {{ max_subscriptions }}
+{% endif -%}
+{% if server_name -%}
+# NATS server name
+server_name: {{ server_name }}
+{% endif -%}
+{% if server_tags is defined and server_tags -%}
+# Key value tags describing properties of the server
+# Tags will be exposed through `/varz` and can be used
+# for system resource requests, such as placement of streams
+server_tags: {{ server_tags|tojson(indent=2) }}
+{% endif -%}
+{% if trace -%}
+# Enable protocol trace log messages (excluding the system account)
+trace: true
+{% endif -%}
+{% if trace_verbose -%}
+# Enable protocol trace log messages (including the system account)
+trace_verbose: true
+{% endif -%}
+{% if debug -%}
+# Enable debug log messages
+debug: true
+{% endif -%}
+{% if logtime is defined and logtime is false -%}
+# Log without timestamp
+logtime: {{ logtime|tojson }}
+{% endif -%}
+{% if log_file -%}
+# Write logs to file
+log_file: {{ log_file }}
+{% endif -%}
+{% if log_size_limit is defined -%}
+# Roll over to a new file after limit is reached
+log_size_limit: {{ log_size_limit }}
+{% endif -%}
+{% if max_traced_msg_len is defined -%}
+# Set a limit to the trace of the payload of a message
+max_traced_msg_len: {{  max_traced_msg_len }}
+{% endif -%}
+{% if syslog -%}
+# Log to syslog
+syslog: true
+{% endif -%}
+{% if remote_syslog -%}
+# Log to remote syslog
+remote_syslog: {{ remote_syslog }}
+{% endif -%}
+{% if http_port -%}
+# Enable monitoring endpoint
+http_port: {{ http_port }}
+{% endif -%}
+{% if http -%}
+# Enable monitoring endpoint
+http: {{ http }}
+{% endif -%}
+{% if https_port -%}
+# Enable monitoring endpoint with TLS
+https_port: {{ https_port }}
+{% endif -%}
+{% if https -%}
+# Enable monitoring endpoint with TLS
+https: {{ https }}
+{% endif -%}
+{% if http_base_path -%}
+# Base path for monitoring endpoint
+http_base_path: {{ http_base_path }}
+{% endif -%}
+{% if system_account -%}
+# Configure system account
+system_account: {{ system_account }}
+{% endif -%}
+{% if pid_file -%}
+# Write process PID to file
+pid_file: {{ pid_file }}
+{% endif -%}
+{% if ports_file_dir -%}
+# Write process PID to file within directory
+# File will be named "nats-server_<pid>.ports"
+# Directory MUST exist before starting nats-server
+ports_file_dir: {{ ports_file_dir }}
+{% endif -%}
+{% if connect_error_reports -%}
+# Number of attempts at which a repeated failed route, gateway or leaf node connection is reported
+connect_error_reports: {{ connect_error_reports }}
+{% endif -%}
+{% if reconnect_error_reports -%}
+# Number of attempts at which a repeated failed route, gateway or leaf node reconnect is reported
+reconnect_error_reports: {{ reconnect_error_reports }}
+{% endif -%}
+{% if disable_sublist_cache -%}
+# Disable subscription caches for all accounts
+# This is saves resources in situations where different subjects are used all the time
+disable_sublist_cache: true
+{% endif -%}
+{% if lame_duck_duration -%}
+# In lame duck mode the server rejects new clients and slowly closes client connections
+# After this duration is over the server shuts down
+# Note that this value cannot be set lower than 30 seconds
+lame_duck_duration: "{{ lame_duck_duration }}"
+{% endif -%}
+{% if lame_duck_grace_period -%}
+# The duration the server waits (after entering lame duck mode)
+# before starting to close client connections
+lame_duck_grace_period: "{{ lame_duck_grace_period }}"
+{% endif -%}
+{% if authorization -%}
+# Configuration map for client authentication/authorization
+authorization: {{ authorization|tojson(indent=2) }}
+{% endif -%}
+{% if no_auth_user -%}
+# A client connecting without any form of authentication will be associated with this user, its permissions and account
+no_auth_user: "{{ no_auth_user }}"
+{% endif -%}
+{% if accounts -%}
+# Enable multitenancy using accounts
+accounts: {{ accounts|tojson(indent=2) }}
+{% endif -%}
+{% if operator -%}
+# Enable operator authorization mode
+operator: {{ operator }}
+{% endif -%}
+{% if resolver -%}
+# Use NATS resolver to resolve accounts
+resolver: {{ resolver|tojson(indent=2) }}
+{% endif -%}
+{% if resolver_preload -%}
+# Accounts JWT allowed to connect to the server by default
+# Once server is started, accounts can be managed using NATS resolver
+# Note that only system account is allowed to communicate with NATS resolver
+resolver_preload: {{ resolver_preload|tojson(indent=2) }}
+{% endif -%}
+{% if jetstream is defined and jetstream is not none and jetstream is not false -%}
+# Enable NATS JetStream
+jetstream: {{ jetstream|tojson(indent=2) }}
+{% endif -%}
+{% if leafnodes %}
+# Configure inbound and outbound leafnodes connections
+leafnodes: {
+  {% if leafnodes.listen -%}
+  # Listen for incoming leafnode connections
+  listen: {{ leafnodes.listen }}
+{% endif -%}
+  {% if leafnodes.port or leafnodes.host -%}
+  # Listen for incoming leafnode connections
+  {% if leafnodes.host -%}
+  host: {{ leafnodes.host }}
+  {% endif -%}
+  {% if leafnodes.port -%}
+  port: {{ leafnodes.port }}
+{% endif -%}
+{% endif -%}
+  {% if leafnodes.advertise %}
+  # Advertise how this server can be contacted by leaf nodes.
+  advertise: {{ leafnodes.advertise }}
+{% endif -%}
+  {% if leafnodes.no_advertise %}
+  # Indicate that server shouldn't be advertised to leaf nodes.
+  no_advertise: true
+{% endif %}
+  {%- if leafnodes.remotes -%}
+  # Connect to remote leaf nodes
+  remotes: {{ leafnodes.remotes|tojson(indent=2)|indent(2) }}
+{% endif -%}
+  {%- if leafnodes.reconnect -%}
+  # Interval in seconds at which reconnect attempts to a remote server are made
+  reconnect: {{ leafnodes.reconnect }}
+{% endif -%}
+  {% if leafnodes.tls -%}
+  # Require leafnodes to connect using TLS
+  tls: {{ leafnodes.tls|tojson(indent=2)|indent(2) }}
+{% endif -%}
+  {% if leafnodes.authorization -%}
+  authorization: {{ leafnodes.authorization|tojson(indent=2)|indent(2) }}
+{% endif -%}
+}
+{% endif -%}
+{% if cluster %}
+# Configure cluster mode
+cluster: {
+  {% if cluster.name -%}
+  name: {{ cluster.name }}
+{% endif -%}
+  {% if cluster.host or cluster.port or cluster.listen -%}
+  # Listen for incoming cluster connections
+  {% if cluster.host -%}
+  host: {{ cluster.host }}
+{% endif -%}
+  {% if cluster.port -%}
+  port: {{ cluster.port }}
+{% endif -%}
+  {% if cluster.listen -%}
+  listen: {{ cluster.listen }}
+{% endif -%}
+{% endif -%}
+  {% if cluster.advertise -%}
+  # Hostport <host>:<port> to advertise how this server can be contacted by other cluster members
+  advertise: {{ cluster.advertise }}
+{% endif -%}
+  {% if cluster.no_advertise -%}
+  # Do not send or gossip server client URLs to other servers in the cluster
+  # Also prevent server telling its client about the other servers' client URLs
+  no_advertise: true
+{% endif -%}
+  {% if cluster.routes -%}
+  # A list of other servers (URLs) to cluster with. Self-routes are ignored.
+  # Should authentication via token or username/password be required, specify them as part of the URL
+  routes: {{ cluster.routes|tojson(indent=2)|indent(2) }}
+{% endif -%}
+  {% if cluster.connect_retries -%}
+  # After how many failed connect attempts to give up establishing a connection to a discovered route. Default is 0, do not retry. When enabled, attempts will be made once a second.
+  # This, does not apply to explicitly configured routes
+  connect_retries: {{ cluster.connect_retries }}
+{% endif -%}
+  {% if cluster.tls -%}
+  # Configure TLS for communications between cluster members
+  tls: {{ cluster.tls|tojson(indent=2)|indent(2) }}
+{% endif -%}
+  {% if cluster.authorization -%}
+  authorization: {{ cluster.authorization|tojson(indent=2)|indent(2) }}
+{% endif -%}
+}
+{% endif -%}
+{% if websocket %}
+# Configure websocket server
+websocket: {
+  {% if websocket.host or websocket.port or websocket.listen -%}
+  # Listen for incoming websocket connections
+  {% if websocket.host -%}
+  host: {{ websocket.host }}
+{% endif -%}
+  {% if websocket.port -%}
+  port: {{ websocket.port }}
+{% endif -%}
+  {% if websocket.listen -%}
+  listen: {{ websocket.listen }}
+{% endif -%}
+{% endif -%}
+  {% if websocket.advertise -%}
+  # Hostport <host>:<port> to  to be advertised for websocket connections
+  advertise: {{ websocket.advertise }}
+{% endif -%}
+  {% if websocket.tls -%}
+  # Configure TLS
+  tls: {{ websocket.tls|tojson(indent=2)|indent(2) }}
+{% endif -%}
+  {% if websocket.no_tls -%}
+  # Serve plain websocket instead of secured websockets
+  # Use it only when NATS is served behind a reverse-proxy
+  # or during development
+  no_tls: true
+{% endif -%}
+  {% if websocket.same_origin -%}
+  # HTTP origin header must match the request’s hostname
+  # If no Origin header is present, this check will not be performed
+  same_origin: true
+{% endif -%}
+  {% if websocket.allowed_origins -%}
+  # HTTP origin header must match one of allowed origins
+  # If no Origin header is present, this check will not be performed
+  allowed_origins: {{ websocket.allowed_origins|tojson(indent=2)|indent(2) }}
+{% endif -%}
+  {% if websocket.compression -%}
+  # Enable support for compressed websocket frames in the server
+  # Note: for compression to be used, both server and client have to support it
+  compression: true
+{% endif -%}
+  {% if websocket.handshake_timeout -%}
+  # Total time allowed for the server to read the client request and write the response back
+  # to the client.
+  handshake_timeout: "{{ websocket.handshake_timeout }}"
+{% endif -%}
+  {% if websocket.jwt_cookie -%}
+  # Name for an HTTP cookie, that if present will be used as a client JWT
+  # If the client specifies a JWT in the CONNECT protocol, this option is ignored
+  jwt_cookie: "{{ websocket.jwt_cookie }}"
+{% endif -%}
+  {% if websocket.no_auth_user -%}
+  # A client connecting without any form of authentication will be associated with this user, its permissions and account
+  no_auth_user: "{{ websocket.no_auth_user }}"
+{% endif -%}
+}
+{% endif -%}
+{% if mqtt %}
+# Configure MQTT server
+mqtt: {
+  {% if mqtt.host or mqtt.port or mqtt.listen -%}
+  # Listen for incoming MQTT connections
+  {% if mqtt.host -%}
+  host: {{ mqtt.host }}
+{% endif -%}
+  {% if mqtt.port -%}
+  port: {{ mqtt.port }}
+{% endif -%}
+  {% if mqtt.listen -%}
+  listen: {{ mqtt.listen }}
+{% endif -%}
+{% endif -%}
+  {% if mqtt.tls -%}
+  # Configure TLS
+  tls: {{ mqtt.tls|tojson(indent=2)|indent(2) }}
+{% endif -%}
+  {% if mqtt.no_auth_user -%}
+  # A client connecting without any form of authentication will be associated with this user, its permissions and account
+  no_auth_user: "{{ mqtt.no_auth_user }}"
+{% endif -%}
+  {% if mqtt.ack_wait -%}
+  # The amount of time after which a QoS 1 message sent to
+  # a client is redelivered as a DUPLICATE if the server has not
+  # received the PUBACK packet on the original Packet Identifier
+  ack_wait: "{{ mqtt.ack_wait }}"
+{% endif -%}
+  {% if mqtt.max_ack_pending -%}
+  # amount of QoS 1 messages the server can send to
+  # a subscription without receiving any PUBACK for those messages
+  # The valid range is [0..65535]
+  max_ack_pending: {{ mqtt.max_ack_pending }}
+{% endif -%}
+}
+{% endif -%}
